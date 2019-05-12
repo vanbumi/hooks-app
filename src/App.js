@@ -1,8 +1,20 @@
 import React from 'react';
 
+function Box(props) {
+  return (
+    <div>
+      <h1>{props.text}</h1>
+      <h2>{props.subtitle}</h2>
+    </div>
+  )
+}
+
 function App() {
   return (
-    <h1>Welcome to React Hook Course Mediocademy!</h1>
+    <Box
+      text="Ini adalah stateless functional component Dengan Props."
+      subtitle="Aku suka dan cinta dengan React!"
+    />
   );
 }
 
