@@ -7,11 +7,10 @@ function App() {
   // cek status dari activated dengan menggunakan button
   const buttonText = activated ? 'Active' : 'Inactive';
 
+  // menggunakan tradional javascript function
   function onClick() {
     setActivated(!activated);
   }
-
-  //const onClick = () => setActivated(!activated);
 
   return (
     <button onClick={onClick}>
