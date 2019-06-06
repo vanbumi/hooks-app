@@ -7,7 +7,7 @@ function App() {
   return (
     <button>
       The text
-      </button>
+    </button>
   )
 }
 
