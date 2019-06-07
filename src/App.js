@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
 
 function App() {
+  const [count, setCount] = useState(0);
+  const handleClick = () => setCount((prevCount) => {
+    return prevCount + 1;
+  });
 
-  const [activated, setActivated] = (useState(false));
-
-  // cek status dari activated dengan menggunakan button
-  const buttonText = activated ? 'Active' : 'Inactive';
-
-  // menggunakan tradional javascript function
-  function onClick() {
-    setActivated(!activated);
-  }
 
   return (
-    <button onClick={onClick}>
-      {buttonText}
-    </button>
+    <div>
+      <button onClick={handleClick}>Increase Count</button>
+      <h1>{count}</h1>
+    </div>
   )
 }
 
