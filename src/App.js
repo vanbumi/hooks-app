@@ -1,21 +1,46 @@
 import React, { useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0);
-  const handleIncrease = () => setCount(count + 1);
-  const handleDecrese = () => setCount(count - 1);
-  // const handleReset = () => setCount(0);
-  function handleReset() {
-    setCount(0);
+  const [state, setState] = useState({
+    kota: '',
+    kodePos: '',
+  })
+
+  function handleKotaChange(event) {
+    setState({
+      ...state, kota: event.target.value
+    })
+  }
+
+  function handleKodePosChange(event) {
+    setState({
+      ...state, kodePos: event.target.value
+    })
   }
 
   return (
-    <div>
-      <button onClick={handleIncrease}>Increase Count</button>
-      <button onClick={handleDecrese}>Decrease Count</button>
-      <button onClick={handleReset}>Reset Count</button>
-      <h1>{count}</h1>
-    </div>
+    <form>
+      <div>
+        <input
+          type="text"
+          placeholder="nama kota"
+          value={state.kota}
+          onChange={handleKotaChange}
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="kode pos"
+          value={state.kodePos}
+          onChange={handleKodePosChange}
+        />
+      </div>
+      <br />
+      <div>
+        Anda tinggal di {`kota ${state.kota}, kode pos ${state.kodePos}`}
+      </div>
+    </form>
   )
 }
 
