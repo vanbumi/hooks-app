@@ -1,21 +1,15 @@
 import React, { useState } from 'react';
 
 function App() {
-  const [state, setState] = useState({
-    kota: '',
-    kodePos: '',
-  })
+  const [kota, setKota] = useState('');
+  const [kodePos, setKodePos] = useState('');
 
   function handleKotaChange(event) {
-    setState({
-      ...state, kota: event.target.value
-    })
+    setKota(event.target.value)
   }
 
   function handleKodePosChange(event) {
-    setState({
-      ...state, kodePos: event.target.value
-    })
+    setKodePos(event.target.value)
   }
 
   return (
@@ -24,7 +18,7 @@ function App() {
         <input
           type="text"
           placeholder="nama kota"
-          value={state.kota}
+          value={kota}
           onChange={handleKotaChange}
         />
       </div>
@@ -32,13 +26,13 @@ function App() {
         <input
           type="text"
           placeholder="kode pos"
-          value={state.kodePos}
+          value={kodePos}
           onChange={handleKodePosChange}
         />
       </div>
       <br />
       <div>
-        Anda tinggal di {`kota ${state.kota}, kode pos ${state.kodePos}`}
+        Anda tinggal di {`kota ${kota}, kode pos ${kodePos}`}
       </div>
     </form>
   )
