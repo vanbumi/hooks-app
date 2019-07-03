@@ -4,24 +4,7 @@ function App() {
   const [kota, setKota] = useState('');
   const [kodePos, setKodePos] = useState('');
 
-  // function handleKotaChange(event) {
-  //   setKota(event.target.value)
-  // }
-
-  // const handleKotaChange = (event) => {
-  //   setKota(event.target.value)
-  // }
-
   const handleKotaChange = (event) => setKota(event.target.value)
-
-  // function handleKodePosChange(event) {
-  //   setKodePos(event.target.value)
-  // }
-
-  // const handleKodePosChange = (event) => {
-  //   setKodePos(event.target.value)
-  // }
-
   const handleKodePosChange = (event) => setKodePos(event.target.value)
 
   return (
@@ -42,10 +25,12 @@ function App() {
           onChange={handleKodePosChange}
         />
       </div>
-      <br />
       <div>
-        Anda tinggal di {`kota ${kota}, kode pos ${kodePos}`}
+        <p>
+          Anda tinggal di {`kota: ${kota}, kode pos ${kodePos}`}
+        </p>
       </div>
+
     </form>
   )
 }
