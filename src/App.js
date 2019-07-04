@@ -1,38 +1,59 @@
 import React, { useState } from 'react';
 
-function App() {
-  const [kota, setKota] = useState('');
-  const [kodePos, setKodePos] = useState('');
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+  }
 
-  const handleKotaChange = (event) => setKota(event.target.value)
-  const handleKodePosChange = (event) => setKodePos(event.target.value)
+  componentDidMount() {
+    console.log("Ini adalah componentDidMount, akan run setelah first mount pada DOM")
+  }
 
-  return (
-    <form>
-      <div>
-        <input
-          type="text"
-          placeholder="nama kota"
-          value={kota}
-          onChange={handleKotaChange}
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          placeholder="kode pos"
-          value={kodePos}
-          onChange={handleKodePosChange}
-        />
-      </div>
-      <div>
-        <p>
-          Anda tinggal di {`kota: ${kota}, kode pos ${kodePos}`}
-        </p>
-      </div>
+  componentDidUpdate(prevProps, prevState) {
+    console.log("Ini adalah componentDidUpdate, yang akan run setelah re-render atau render-render berikutnya")
+  }
 
-    </form>
-  )
+  componentWillUnmount() {
+    console.log("Ini adalah componentWillUnmount, yang akan di remove")
+  }
+
+  render() {
+    console.log("I am rendering now!!");
+    const { count } = this.state;
+
+    return (
+      <div>
+        <button onClick={() => this.setState({ count: count + 1 })}>Increase</button>
+        <button onClick={() => this.setState({ count: count - 1 })}>Decrease</button>
+        <h1>{count}</h1>
+      </div>
+    )
+  }
+}
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+    };
+  }
+
+  render() {
+    const { visible } = this.state;
+    return (
+      <div>
+        <button onClick={() => this.setState({ visible: !visible })}>
+          Show / Hide Counter Component
+        </button>
+
+        {visible && <Counter />}
+      </div>
+    )
+  }
 }
 
 export default App;
