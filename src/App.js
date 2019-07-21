@@ -1,59 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-class Counter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0,
-    };
-  }
+function App() {
+  const [count, setCount] = useState(0);
+  const handleIncrease = () => setCount(count + 1);
+  const handleDecrease = () => setCount(count - 1);
 
-  componentDidMount() {
-    console.log("Ini adalah componentDidMount, akan run setelah first mount pada DOM")
-  }
+  // tambah useEffect
+  useEffect(() => {
+    console.log(`Ini adalah useEffect function, current count adalah ${count}`)
+  })
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log("Ini adalah componentDidUpdate, yang akan run setelah re-render atau render-render berikutnya")
-  }
+  return (
+    <div>
+      <button onClick={ handleIncrease }>Increase</button>
+      <button onClick={ handleDecrease }>Decrease</button>
 
-  componentWillUnmount() {
-    console.log("Ini adalah componentWillUnmount, yang akan di remove")
-  }
-
-  render() {
-    console.log("I am rendering now!!");
-    const { count } = this.state;
-
-    return (
-      <div>
-        <button onClick={() => this.setState({ count: count + 1 })}>Increase</button>
-        <button onClick={() => this.setState({ count: count - 1 })}>Decrease</button>
-        <h1>{count}</h1>
-      </div>
-    )
-  }
-}
-
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: false,
-    };
-  }
-
-  render() {
-    const { visible } = this.state;
-    return (
-      <div>
-        <button onClick={() => this.setState({ visible: !visible })}>
-          Show / Hide Counter Component
-        </button>
-
-        {visible && <Counter />}
-      </div>
-    )
-  }
-}
+      <h1>{ count }</h1>
+    </div>
+  )
+} 
 
 export default App;
