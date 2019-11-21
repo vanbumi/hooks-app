@@ -8,16 +8,20 @@ function App() {
   // tambah useEffect
   useEffect(() => {
     console.log(`Ini adalah useEffect function, current count adalah ${count}`)
+
+    return () => {
+      console.log(`Saya bertugas me-remove semua setup di atas! Last count adalah ${count}`)
+    }
   })
 
   return (
     <div>
-      <button onClick={ handleIncrease }>Increase</button>
-      <button onClick={ handleDecrease }>Decrease</button>
+      <button onClick={handleIncrease}>Increase</button>
+      <button onClick={handleDecrease}>Decrease</button>
 
-      <h1>{ count }</h1>
+      <h1>{count}</h1>
     </div>
   )
-} 
+}
 
 export default App;
